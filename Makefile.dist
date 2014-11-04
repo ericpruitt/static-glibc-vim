@@ -1,0 +1,29 @@
+# Author: Eric Pruitt (http://www.codevat.com)
+# License: 2-Clause BSD (http://opensource.org/licenses/BSD-2-Clause)
+# Description: This Makefile is for installing and uninstalling statically
+#       linked Vim binaries. A simple wrapper script is used to handle
+#       automatically setting the VIMRUNTIME environment variable to the
+#       correct folder.
+
+# Folder in $PATH where symlinks to the executables are placed.
+BINDIR=$(HOME)/bin
+
+install:
+	@if [ -e $(BINDIR)/vim ] && ! [ -h $(BINDIR)/vim ]; then \
+		echo 'Cannot replace $(BINDIR)/vim: not a symlink' >&2; \
+		exit 1; \
+	elif [ -e $(BINDIR)/xxd ] && ! [ -h $(BINDIR)/xxd ]; then \
+		echo 'Cannot replace $(BINDIR)/xxd: not a symlink' >&2; \
+		exit 1; \
+	fi
+	@chmod +x vim.sh vim xxd
+	@ln -f -s "$$PWD/vim.sh" $(BINDIR)/vim && echo '- $(BINDIR)/vim'
+	@ln -f -s "$$PWD/xxd" $(BINDIR)/xxd && echo '- $(BINDIR)/xxd'
+
+uninstall:
+	@if [ -h $(BINDIR)/vim ]; then \
+		rm $(BINDIR)/vim && echo '- $(BINDIR)/vim'; \
+	fi
+	@if [ -h $(BINDIR)/xxd ]; then \
+		rm $(BINDIR)/xxd && echo '- $(BINDIR)/xxd'; \
+	fi
