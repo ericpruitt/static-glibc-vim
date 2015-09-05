@@ -11,7 +11,7 @@ BINDIR=$(HOME)/bin
 DISTEXTENSION=bz2
 
 # URL of the Vim source code repository
-REPOSITORY=https://vim.googlecode.com/hg/
+REPOSITORY=https://bitbucket.org/vim-mirror/vim
 # Basename of the compressed archive
 DISTTARGET=vim.$(DISTEXTENSION)
 # Determines whether or not `make` is automatically executed inside $INSTALLDIR
