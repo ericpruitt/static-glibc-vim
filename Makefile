@@ -53,6 +53,7 @@ vim-src/src/auto/config.status: $(SRCDEP)
 		--disable-sysmouse \
 		--disable-xsmp \
 		--enable-multibyte \
+		--with-features=normal \
 		--without-x
 
 vim-src/.config.h-modified: vim-src/src/auto/config.status
