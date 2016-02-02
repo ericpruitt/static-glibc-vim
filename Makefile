@@ -43,6 +43,7 @@ vim-src/src/auto/config.status: $(SRCDEP)
 	cd vim-src && \
 	CFLAGS="-DFEAT_CONCEAL=1" LDFLAGS="-static" ./configure \
 		--prefix=/dev/null/SET_THE_VIMRUNTIME_ENVIRONMENT_VARIABLE \
+		--disable-channel \
 		--disable-gpm \
 		--disable-gtktest \
 		--disable-gui \

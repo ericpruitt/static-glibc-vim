@@ -10,40 +10,41 @@ warnings like this one will be emitted during the build process:
     misc1.c:…: warning: … requires … the glibc version used for linking
 
 By making some relatively minor changes to the Vim codebase, the glibc version
-dependency can be completely eliminated. As of November 1st, 2014, the
+dependency can be completely eliminated. As of February 1st, 2016, the
 resulting Vim binary has the following feature set which has been tweaked from
 what is normally generated with `--with-features=normal` to suit my personal
 preferences:
 
     Normal version without GUI.  Features included (+) or not (-):
-    +acl             -farsi           -mouse_netterm   +syntax
-    -arabic          +file_in_path    -mouse_sgr       +tag_binary
-    +autocmd         +find_in_path    -mouse_sysmouse  +tag_old_static
-    -balloon_eval    +float           -mouse_urxvt     -tag_any_white
-    -browse          +folding         +mouse_xterm     -tcl
-    +builtin_terms   -footer          +multi_byte      +terminfo
-    +byte_offset     +fork()          +multi_lang      +termresponse
-    +cindent         -gettext         -mzscheme        +textobjects
-    -clientserver    -hangul_input    -netbeans_intg   +title
-    -clipboard       +iconv           +path_extra      -toolbar
-    +cmdline_compl   +insert_expand   -perl            +user_commands
-    +cmdline_hist    +jumplist        +persistent_undo +vertsplit
-    +cmdline_info    -keymap          +postscript      +virtualedit
-    +comments        -langmap         +printer         +visual
-    +conceal         -libcall         -profile         +visualextra
-    +cryptv          +linebreak       -python          +viminfo
-    -cscope          +lispindent      -python3         +vreplace
-    +cursorbind      +listcmds        +quickfix        +wildignore
-    +cursorshape     +localmap        +reltime         +wildmenu
-    +dialog_con      -lua             -rightleft       +windows
-    +diff            +menu            -ruby            +writebackup
-    +digraphs        +mksession       +scrollbind      -X11
-    -dnd             +modify_fname    -signs           -xfontset
-    -ebcdic          +mouse           +smartindent     -xim
-    -emacs_tags      -mouseshape      -sniff           -xsmp
-    +eval            -mouse_dec       +startuptime     -xterm_clipboard
-    +ex_extra        -mouse_gpm       +statusline      -xterm_save
-    +extra_search    -mouse_jsbterm   -sun_workshop    -xpm
+    +acl             -farsi           -mouse_sgr       +tag_old_static
+    -arabic          +file_in_path    -mouse_sysmouse  -tag_any_white
+    +autocmd         +find_in_path    -mouse_urxvt     -tcl
+    -balloon_eval    +float           +mouse_xterm     +terminfo
+    -browse          +folding         +multi_byte      +termresponse
+    +builtin_terms   -footer          +multi_lang      +textobjects
+    +byte_offset     +fork()          -mzscheme        +title
+    -channel         -gettext         -netbeans_intg   -toolbar
+    +cindent         -hangul_input    +path_extra      +user_commands
+    -clientserver    +iconv           -perl            +vertsplit
+    -clipboard       +insert_expand   +persistent_undo +virtualedit
+    +cmdline_compl   +jumplist        +postscript      +visual
+    +cmdline_hist    -keymap          +printer         +visualextra
+    +cmdline_info    -langmap         -profile         +viminfo
+    +comments        -libcall         -python          +vreplace
+    +conceal         +linebreak       -python3         +wildignore
+    +cryptv          +lispindent      +quickfix        +wildmenu
+    -cscope          +listcmds        +reltime         +windows
+    +cursorbind      +localmap        -rightleft       +writebackup
+    +cursorshape     -lua             -ruby            -X11
+    +dialog_con      +menu            +scrollbind      -xfontset
+    +diff            +mksession       -signs           -xim
+    +digraphs        +modify_fname    +smartindent     -xsmp
+    -dnd             +mouse           -sniff           -xterm_clipboard
+    -ebcdic          -mouseshape      +startuptime     -xterm_save
+    -emacs_tags      -mouse_dec       +statusline      -xpm
+    +eval            -mouse_gpm       -sun_workshop
+    +ex_extra        -mouse_jsbterm   +syntax
+    +extra_search    -mouse_netterm   +tag_binary
 
 In short there is little to no:
 
