@@ -11,7 +11,7 @@ BINDIR=$(HOME)/bin
 DISTEXTENSION=bz2
 
 # URL of the Vim source code repository
-REPOSITORY=https://bitbucket.org/vim-mirror/vim
+REPOSITORY=https://github.com/vim/vim.git
 # Basename of the compressed archive
 DISTTARGET=vim.$(DISTEXTENSION)
 # Determines whether or not `make` is automatically executed inside $INSTALLDIR
@@ -26,14 +26,16 @@ SRCDEP=$(if $(wildcard vim-src),,vim-src)
 all: vim-src/src/vim
 
 vim-src:
-	hg clone $(REPOSITORY) vim-src
+	git clone $(REPOSITORY) vim-src
 
 update: $(SRCDEP)
-	@cd vim-src || exit 1; \
+	@set -e; \
+	cd vim-src; \
 	echo 'Checking for updates...'; \
-	if hg -q incoming > /dev/null; then \
-		(cd .. && $(MAKE) -s clean); \
-		hg pull -u; \
+	git fetch origin; \
+	if ! git diff origin/master HEAD --quiet; then \
+		$(MAKE) -C .. -s clean; \
+		git merge origin/master; \
 	else \
 		echo 'No updates found.'; \
 		exit 1; \
@@ -133,7 +135,7 @@ uninstall:
 
 clean:
 	@rm -v -f $(DISTTARGET) vim-src/.config.h-modified vim-src/src/*.orig
-	@cd vim-src && $(MAKE) -s distclean && hg update -C
+	@cd vim-src && git reset --hard && git clean -x -f -d -q
 
 cleanest:
 	rm -rf vim-src
