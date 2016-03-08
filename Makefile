@@ -11,7 +11,7 @@ BINDIR=$(HOME)/bin
 DISTEXTENSION=bz2
 
 # URL of the Vim source code repository
-REPOSITORY=https://bitbucket.org/vim-mirror/vim
+REPOSITORY=https://github.com/vim/vim.git
 # Basename of the compressed archive
 DISTTARGET=vim.$(DISTEXTENSION)
 # Determines whether or not `make` is automatically executed inside $INSTALLDIR
@@ -26,7 +26,7 @@ SRCDEP=$(if $(wildcard vim-src),,vim-src)
 all: vim-src/src/vim
 
 vim-src:
-	hg clone $(REPOSITORY) vim-src
+	git clone $(REPOSITORY) vim-src
 
 update: $(SRCDEP)
 	@cd vim-src || exit 1; \
