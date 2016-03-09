@@ -29,11 +29,12 @@ vim-src:
 	git clone $(REPOSITORY) vim-src
 
 update: $(SRCDEP)
-	@cd vim-src || exit 1; \
+	@set -e; \
+	cd vim-src; \
 	echo 'Checking for updates...'; \
 	git fetch origin; \
 	if ! git diff origin/master HEAD --quiet; then \
-		(cd .. && $(MAKE) -s clean); \
+		$(MAKE) -C .. -s clean; \
 		git merge origin/master; \
 	else \
 		echo 'No updates found.'; \
@@ -134,7 +135,7 @@ uninstall:
 
 clean:
 	@rm -v -f $(DISTTARGET) vim-src/.config.h-modified vim-src/src/*.orig
-	@cd vim-src && $(MAKE) -s distclean && ( git reset --hard; git clean -x -f -d -q; )
+	@cd vim-src && git reset --hard && git clean -x -f -d -q;
 
 cleanest:
 	rm -rf vim-src
