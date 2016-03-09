@@ -135,7 +135,7 @@ uninstall:
 
 clean:
 	@rm -v -f $(DISTTARGET) vim-src/.config.h-modified vim-src/src/*.orig
-	@cd vim-src && git reset --hard && git clean -x -f -d -q;
+	@cd vim-src && git reset --hard && git clean -x -f -d -q
 
 cleanest:
 	rm -rf vim-src
