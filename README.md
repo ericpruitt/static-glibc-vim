@@ -81,8 +81,8 @@ are as follows:
   run `make install`. By default, symlinks to the executables will be placed in
   `~/bin/`. To install the symlinks in another directory, override the Makefile
   variable `BINDIR`: `make BINDIR=/usr/local/bin install`. By default, this
-  produces a bz2 archive. Override the `DISTEXTENSION` to change this, e.g.,
-  `make dist DISTEXTENSION=tgz`.
+  produces a tar.bz2 archive. Override the `DISTEXTENSION` to change this,
+  e.g., `make dist DISTEXTENSION=tar.xz`.
 - **clean**: Return the local Vim source code repository to a clean,
   unadulterated state.
 - **cleanest**: Delete the `vim-src` folder.
@@ -92,7 +92,7 @@ There are several variables defined in the Makefile that may be overridden:
 binaries and the Vim runtime folder will be stored. `BINDIR` is the directory
 where symlinks to the `xxd` binary and Vim launcher will be placed and should
 be a folder listed in the `PATH` environment variable. `DISTEXTENSION`, which
-defaults to `bz2`, determines the extension and type of the distributable
+defaults to `tar.bz2`, determines the extension and type of the distributable
 archive.
 
 The `vim.sh` script is a wrapper used to launch the statically compiled Vim

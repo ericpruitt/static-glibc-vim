@@ -8,7 +8,7 @@ INSTALLDIR=$(HOME)/vim
 # Folder in $PATH where symlinks to the executables are placed.
 BINDIR=$(HOME)/bin
 # Extension to use when creating a compressed, distributable archive.
-DISTEXTENSION=bz2
+DISTEXTENSION=tar.bz2
 
 # URL of the Vim source code repository
 REPOSITORY=https://github.com/vim/vim.git
